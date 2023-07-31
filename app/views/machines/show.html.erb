@@ -1,1 +1,15 @@
 <h1><%= @machine.location %> Vending Machine</h1>
+<p>Snacks</p>
+<ul>
+  <% @snacks.each do |snack| %>
+    <li><%= snack.name %>: <%= number_to_currency(snack.price) %>
+  <% end %>
+</ul>
+<p>Average Price: <%= number_to_currency(@average_price) %></p>
+<h2>Add Snack:</h2>
+<%= form_with(url: "/snack_machines", method: :put, local: true) do |form| %>
+  <%= form.label "Snack id" %>
+  <%= form.text_field :snack_id, require: true %>
+  <%= form.hidden_field :machine_id , value: @machine.id %>
+  <%= form.submit "Submit" %>
+<% end %>
