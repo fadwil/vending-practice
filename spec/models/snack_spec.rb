@@ -15,5 +15,9 @@ RSpec.describe Snack, type: :model do
     it '.average_price' do
       expect(Snack.average_price).to eq(2.50)
     end
+
+    it '.total' do
+      expect(Snack.total).to eq(2)
+    end
   end
 end
